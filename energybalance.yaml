@@ -1,0 +1,316 @@
+device_grp: '9'
+device_name: EBM1_DAR
+sensors:
+- name: BARO_P_SUR_Avg
+  type: float
+  unit: hPa
+- name: HMP_M_RH_Avg
+  type: float
+  unit: '%'
+- name: HMP_T_AIR_Avg
+  type: float
+  unit: Deg C
+- name: INK_G_INKS_Avg
+  type: float
+  unit: degree
+- name: INK_G_INKW_Avg
+  type: float
+  unit: degree
+- name: KT_T_SUR_Avg
+  type: float
+  unit: Deg C
+- name: LICOR_D_CD_Avg
+  type: float
+  unit: mg/m**3
+- name: LICOR_M_AH_Avg
+  type: float
+  unit: g/m**3
+- name: OMB_N_N_001_Avg
+  type: float
+  unit: mm/s
+- name: OMB_N_N_002_Avg
+  type: float
+  unit: mm/s
+- name: PYG_R_LWDP_Avg
+  type: float
+  unit: W/m**2
+- name: PYG_R_LWUP_Avg
+  type: float
+  unit: W/m**2
+- name: PYG_T_BOT_Avg
+  type: float
+  unit: Deg C
+- name: PYG_T_TOP_Avg
+  type: float
+  unit: Deg C
+- name: PYR_R_SWDR_Avg
+  type: float
+  unit: W/m**2
+- name: PYR_R_SWUR_Avg
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_001_Avg
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_002_Avg
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_003_Avg
+  type: float
+  unit: W/m**2
+- name: SMT_M_SOIL_001_Avg
+  type: float
+  unit: ''
+- name: SMT_M_SOIL_002_Avg
+  type: float
+  unit: ''
+- name: SMT_M_SOIL_003_Avg
+  type: float
+  unit: ''
+- name: SMT_M_SOIL_004_Avg
+  type: float
+  unit: ''
+- name: Tsonic_Avg
+  type: float
+  unit: Deg C
+- name: Usonic_Avg
+  type: float
+  unit: m/s
+- name: Vsonic_Avg
+  type: float
+  unit: m/s
+- name: Wsonic_Avg
+  type: float
+  unit: m/s
+- name: BARO_P_SUR_Min
+  type: float
+  unit: hPa
+- name: HMP_M_RH_Min
+  type: float
+  unit: '%'
+- name: HMP_T_AIR_Min
+  type: float
+  unit: Deg C
+- name: KT_T_SUR_Min
+  type: float
+  unit: Deg C
+- name: LICOR_D_CD_Min
+  type: float
+  unit: mg/m**3
+- name: LICOR_M_AH_Min
+  type: float
+  unit: g/m**3
+- name: PYG_R_LWDP_Min
+  type: float
+  unit: W/m**2
+- name: PYG_R_LWUP_Min
+  type: float
+  unit: W/m**2
+- name: PYG_T_BOT_Min
+  type: float
+  unit: Deg C
+- name: PYG_T_TOP_Min
+  type: float
+  unit: Deg C
+- name: PYR_R_SWDR_Min
+  type: float
+  unit: W/m**2
+- name: PYR_R_SWUR_Min
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_001_Min
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_002_Min
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_003_Min
+  type: float
+  unit: W/m**2
+- name: Tsonic_Min
+  type: float
+  unit: Deg C
+- name: Usonic_Min
+  type: float
+  unit: m/s
+- name: Vsonic_Min
+  type: float
+  unit: m/s
+- name: Wsonic_Min
+  type: float
+  unit: m/s
+- name: BARO_P_SUR_Max
+  type: float
+  unit: hPa
+- name: HMP_M_RH_Max
+  type: float
+  unit: '%'
+- name: HMP_T_AIR_Max
+  type: float
+  unit: Deg C
+- name: KT_T_SUR_Max
+  type: float
+  unit: Deg C
+- name: LICOR_D_CD_Max
+  type: float
+  unit: mg/m**3
+- name: LICOR_M_AH_Max
+  type: float
+  unit: g/m**3
+- name: PYG_R_LWDP_Max
+  type: float
+  unit: W/m**2
+- name: PYG_R_LWUP_Max
+  type: float
+  unit: W/m**2
+- name: PYG_T_BOT_Max
+  type: float
+  unit: Deg C
+- name: PYG_T_TOP_Max
+  type: float
+  unit: Deg C
+- name: PYR_R_SWDR_Max
+  type: float
+  unit: W/m**2
+- name: PYR_R_SWUR_Max
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_001_Max
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_002_Max
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_003_Max
+  type: float
+  unit: W/m**2
+- name: Tsonic_Max
+  type: float
+  unit: Deg C
+- name: Usonic_Max
+  type: float
+  unit: m/s
+- name: Vsonic_Max
+  type: float
+  unit: m/s
+- name: Wsonic_Max
+  type: float
+  unit: m/s
+- name: BARO_P_SUR_Std
+  type: float
+  unit: hPa
+- name: HMP_M_RH_Std
+  type: float
+  unit: '%'
+- name: HMP_T_AIR_Std
+  type: float
+  unit: Deg C
+- name: KT_T_SUR_Std
+  type: float
+  unit: Deg C
+- name: LICOR_D_CD_Std
+  type: float
+  unit: mg/m**3
+- name: LICOR_M_AH_Std
+  type: float
+  unit: g/m**3
+- name: PYG_R_LWDP_Std
+  type: float
+  unit: W/m**2
+- name: PYG_R_LWUP_Std
+  type: float
+  unit: W/m**2
+- name: PYG_T_BOT_Std
+  type: float
+  unit: Deg C
+- name: PYG_T_TOP_Std
+  type: float
+  unit: Deg C
+- name: PYR_R_SWDR_Std
+  type: float
+  unit: W/m**2
+- name: PYR_R_SWUR_Std
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_001_Std
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_002_Std
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_003_Std
+  type: float
+  unit: W/m**2
+- name: Tsonic_Std
+  type: float
+  unit: Deg C
+- name: Usonic_Std
+  type: float
+  unit: m/s
+- name: Vsonic_Std
+  type: float
+  unit: m/s
+- name: Wsonic_Std
+  type: float
+  unit: m/s
+- name: OMB_N_N_001_Tot
+  type: float
+  unit: mm/s
+- name: OMB_N_N_002_Tot
+  type: float
+  unit: mm/s
+---
+device_grp: '9'
+device_name: EBM1_DAS1
+sensors:
+- name: BARO_P_SUR
+  type: float
+  unit: hPa
+- name: HMP_M_RH
+  type: float
+  unit: '%'
+- name: HMP_T_AIR
+  type: float
+  unit: Deg C
+- name: INK_G_INKS
+  type: float
+  unit: degree
+- name: INK_G_INKW
+  type: float
+  unit: degree
+- name: KT_T_SUR
+  type: float
+  unit: Deg C
+- name: OMB_N_N_001_Tot
+  type: float
+  unit: mm/s
+- name: OMB_N_N_002_Tot
+  type: float
+  unit: mm/s
+- name: PYG_R_LWDP
+  type: float
+  unit: W/m**2
+- name: PYG_R_LWUP
+  type: float
+  unit: W/m**2
+- name: PYG_T_BOT
+  type: float
+  unit: Deg C
+- name: PYG_T_TOP
+  type: float
+  unit: Deg C
+- name: PYR_R_SWDR
+  type: float
+  unit: W/m**2
+- name: PYR_R_SWUR
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_001
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_002
+  type: float
+  unit: W/m**2
+- name: SHF_F_SHF_003
+  type: float
+  unit: W/m**2

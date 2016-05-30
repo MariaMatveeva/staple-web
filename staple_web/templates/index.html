@@ -1,0 +1,164 @@
+{% extends "layout.html" %}
+{% block body %}
+
+  <div class="buttons" style="float:right;">
+    <button style="float:left; cursor:pointer; width:110px; margin:0 5px" onclick="on_import()" type="import"><i class="fa fa-download" title="import"></i> Import</button>
+    <button style="float:left; cursor:pointer; width:110px; margin:0 7px" onclick="on_export()" type="export"><i class="fa fa-upload" title="export"></i> Export</button>
+  </div><br><br>
+
+  {% for yaml in yaml_files %}
+    <button class="accordion" group="{{ yaml[1]['device_grp'] }}" name="{{ yaml[1]['device_name'] }}"><b>Device Group: </b> {{ yaml[1]['device_grp'] }} &ensp;<b>Device Name: </b>{{ yaml[1]['device_name'] }}</button>
+    <div class="panel">
+      <style>
+        button.accordion {
+          background-color: #eee;
+          color: #444;
+          cursor: pointer;
+          padding: 12px;
+          width: 100%;
+          text-align: left;
+          border: 2px solid #fff;
+          border-radius: 8px;
+          outline: none;
+          transition: 0.4s;
+        }
+        button.accordion.active, button.accordion:hover {
+          background-color: #ddd;
+        }
+        div.panel {
+          padding: 0 18px;
+          background-color: white;
+          display: none;
+        }
+        div.panel.show {
+          display: block !important;
+        }
+        button.accordion:after {
+          content: '\02795';
+          font-size: 13px;
+          color: #777;
+          float: right;
+          margin-left: 5px;
+        }
+        button.accordion.active:after {
+          content: "\2796";
+        }
+      </style>
+      <table class="table">
+       <thead>
+          <tr>
+            <th>Name</th>
+            <th>Unit</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for sensor in yaml[1]['sensors'] %}
+            <tr>
+              <td>
+                <input id="name_{{ sensor.name }}" class="name" device="{{ yaml[1]['device_grp'] }}_{{ yaml[1]['device_name'] }}" sensor_type="{{ sensor.type }}" unit="{{ sensor.unit }}" value="{{ sensor.name }}">
+              </td>
+              <td>
+                <input id="unit_{{ sensor.name }}" value="{{ sensor.unit }}" onchange="unit_changed(this.value, this.id)">
+              </td>
+              <td>
+                <select id="type_{{ sensor.name }}" class="type_select" sensor_type="{{ sensor.type }}" onchange="type_changed(this.value, this.id)">
+                  <option value="float">float</option>
+                  <option value="int">int</option>
+                  <option value="blob">blob</option>
+                </select>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endfor %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var test;
+    var i;
+    for (i = 0; i < acc.length; i++) {
+      acc[i].onclick = function() {
+        this.classList.toggle("active");
+        this.nextElementSibling.classList.toggle("show");
+      }
+    }
+
+    function unit_changed(val, id) {
+      var name = id.split("unit_")[1];
+      $("#name_" + name).attr("unit", val);
+    }
+
+    function type_changed(val, id) {
+      var name = id.split("type_")[1];
+      $("#name_" + name).attr("sensor_type", val);
+    }
+
+    function on_export() {
+      var sensors = [];
+      var data = [];
+
+      $.each($(".accordion"), function() {
+        $.each($(".name:input[device=" + $(this).attr("group") + "_" + $(this).attr("name") + "]"), function() {
+          sensors.push({"name": $(this).val(), "unit": $(this).attr("unit"), "type": $(this).attr("sensor_type")})
+      });
+      data.push({"sensors": sensors, "device_grp": $(this).attr("group"), "device_name": $(this).attr("name")})
+      sensors = []
+      });
+
+      $.ajax({
+        type: "POST",
+        url: "/export",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        connection: close,
+        dataType: "json",
+      });
+    };
+
+    function on_import() {
+      var names = [];
+      var new_names = [];
+      var new_types = [];
+      var new_units = [];
+
+      $.each($(".accordion"), function() {
+        $.each($(".name:input[device=" + $(this).attr("group") + "_" + $(this).attr("name") + "]"), function() {
+          names.push($(this).attr("id").split("name_")[1]);
+        });
+      });
+
+      $.ajax({
+        type: "GET",
+        url: "/import",
+        connection: close,
+        dataType: "json",
+        success: function(yaml_files) {
+          $.each(yaml_files, function(index, value) {
+            $.each(value[1]["sensors"], function(i, sval) {
+              new_names.push(sval["name"]);
+              new_units.push(sval["unit"]);
+              new_types.push(sval["type"]);
+            });
+          });
+          for (i = 0; i < new_names.length; i++) {
+            $("#name_" + names[i]).val(new_names[i]);
+            $("#unit_" + names[i]).val(new_units[i]);
+            $("#type_" + names[i]).val(new_types[i]);
+            $("#name_" + names[i]).attr({"sensor_type": new_types[i], "unit": new_units[i]});
+          }
+        }
+      });
+    };
+
+    $(document).ready(function() {
+      $.each($(".type_select"), function() {
+        $(this).val($(this).attr("sensor_type"));
+      });
+    });
+  </script>
+{% endblock %}
